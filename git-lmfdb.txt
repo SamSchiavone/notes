@@ -1,0 +1,84 @@
+# git usage
+git fetch michaelmusty belyi
+git commit -am ""
+git merge michaelmusty/belyi
+git push
+
+# saving edits
+git add (optional)
+git commit -am "<put msg here>"
+git push
+then make a pull request on the web
+
+# setup git
+git remote add michaelmusty git@github.com:michaelmusty/lmfdb.git
+git fetch michaelmusty belyi
+git checkout -b belyi
+git checkout michaelmusty/belyi
+git push --set-upstream origin belyi
+
+#branches:
+  To make a new branch (starting from upstream/master)
+  git fetch upstream
+  git checkout upstream/master
+  git checkout -b new_branch_name
+
+# start running lmfdb locally
+  sage --python ./start-lmfdb.py --debug
+
+# look through the database in sage
+  1) open sage in lmfdb directory
+  2) from lmfdb import db
+  3) db. then tab to see what's there
+  4) e.g., ec = db.ec_curves
+  5) ec.search_cols for the column types
+  6) To get all curves with j-invariant 0, do ec.search({"jinv":"0"}) (the brackets b/c it's a dictionary)
+  7) To convert generator object to list, just call list()
+
+# how to make a query with not equals
+  g1 = belyi.search({'g':1,'base_field':{'$ne':[-1,1]}})
+
+# query for an attribute containing something
+  subgps.lucky({'ambient' : "6.1", 'special_labels':{'$contains':'6.1.Phi'}})['label']
+
+# pyflakes
+  sage -python -m pyflakes
+
+# run test files
+  ./test.sh -n 20
+  (20 for use 20 cores)
+
+# notes
+fetch downloads
+merge merges
+pull = fetch + merge
+
+# dependencies
+   sage -i gap_packages
+   sage -i database_gap
+   sage -i pip
+   sage -b
+   # in the 'lmfdb/' directory:
+   sage -pip install -r requirements.txt
+
+# editing data in lmfdb
+  change user in config.ini to user=editor and add password= with the password
+  db.create_table_like('ec_temp', db.ec_curves) # to create empty table with same format as db.ec_curves
+  # to include the data, too, use the following
+  db.create_table_like('ec_temp', db.ec_curves, data = True) # to create empty table with same format as db.ec_curves
+# I think these next lines are no longer necessary; can create table like with the data included
+# eh, looks like the data feature is still broken...
+  from psycopg2.sql import SQL # to import SQL functions
+  db._execute(SQL('INSERT INTO ec_temp SELECT * FROM ec_curves')) # to insert data from ec_curves into temp table
+  db._execute(SQL('INSERT INTO ec_temp_extras SELECT * FROM ec_curves_extras')) # apparently there are 3 tables for ellcrv data
+
+# scratchwork
+  git status
+  git fetch upstream master
+  git remote
+  git remote add musty git@github.com:michaelmusty/lmfdb.git
+  git fetch musty belyidb
+  git fetch musty belyi
+  git remote rename musty michaelmusty
+  git fetch michaelmusty belyi
+  git checkout michaelmusty/belyi

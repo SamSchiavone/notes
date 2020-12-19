@@ -1,0 +1,26 @@
+Setup:
+1) Go to other person's github webpage
+2) Fork the repository you'd like to edit to copy it to your (online) github account
+3) Click the clone button (SSH!) and copy command
+4) Navigate where you'd like to put it in Terminal and type git clone and paste the link
+5) You did it!
+
+Further notes:
+git remote -v tells you where things are fetched from and pushed to on the web
+
+To communicate with the origin version need to "add upstream", e.g.,
+git remote add upstream git@github.com:edgarcosta/hilbertmodularforms.git
+Then if you do "git remote -v" it should include more options for fetching and pushing.
+
+Workflow:
+1) git add filename (add the file to be tracked)
+2) git commit -m "message" (commit to the change on my local machine)
+3) git push (this pushes to my cloud)
+4) go to Edgar's webpage and make a pull request (this makes the changes on Edgar's cloud)
+5) To get changes from Edgar's cloud (if other people have done work that has been merged): git pull upstream master
+
+Branches:
+To make a new branch (starting from upstream/master)
+git fetch upstream
+git checkout upstream/master
+git checkout -b new_branch_name
