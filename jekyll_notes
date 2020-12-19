@@ -1,0 +1,24 @@
+TODO:
+1) edit default.html in _layouts, e.g., add menu bar or something. See these pages:
+    https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+    https://mmistakes.github.io/minimal-mistakes/docs/overriding-theme-defaults/
+2) add content to pages
+
+References:
+https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/creating-a-github-pages-site-with-jekyll
+https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/adding-content-to-your-github-pages-site-using-jekyll
+
+Sites to copy:
+https://github.com/alexjbest/alexjbest.github.io
+https://github.com/edgarcosta/beantheory/blob/master/_layouts/default.html
+https://benhcalvert.github.io/ReactPortfolio/#about
+
+To run site locally use:
+bundle exec jekyll serve
+
+Some themes that look good:
+https://github.com/pages-themes/tactile
+https://github.com/pages-themes/slate
+https://github.com/pages-themes/midnight
+https://pages-themes.github.io/leap-day/
+(this last one has a menu thingy to jump to different sections)
