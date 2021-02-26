@@ -1,0 +1,62 @@
+13:26:04 From Edgar Costa to Everyone : https://teal.lmfdb.xyz/L/rational
+13:41:33 From Edgar Costa to Everyone : http://localhost:37778/L/3/1/1.1/r0e3/p0.17p16.40m16.57/0
+14:58:38 From Edgar Costa to Everyone : parallel echo 'I am {}' ::: {1..3}
+14:59:28 From Edgar Costa to Everyone : printf "1\n2\n3" | parallel echo 'I am {}'
+15:00:48 From Edgar Costa to Everyone : Import sys
+15:00:53 From Edgar Costa to Everyone : sys.argv
+15:01:07 From Edgar Costa to Everyone : sys.argv[1] = “[1,2,3,4”]
+15:01:54 From Edgar Costa to Everyone : gp.polredabs(PolynomialRing(ZZ, ‘x’)(sys.argv[1]))
+15:06:14 From Edgar Costa to Everyone : import sys, ast
+from sage.all import PolynomialRing, ZZ
+input = sys.argv[1]
+R = PolynomialRing(ZZ, 'x')
+print(input + ":" + R(str(gp.polredabs(R(ast.literal_eval(input))).list())
+15:08:39 From Andrew Sutherland to Everyone : R([1,2,3])
+15:08:45 From Andrew Sutherland to Everyone : R(x^2+2*x+3)
+15:10:59 From Andrew Sutherland to Everyone : magma poly:="x^2+x+1" myprogram.m
+15:11:24 From Andrew Sutherland to Everyone : sage myprog.py "x^2+x+1"
+15:12:06 From Andrew Sutherland to Everyone : int main (int argc, char *argv[])
+15:12:14 From Edgar Costa to Everyone : import sys
+from sage.all import PolynomialRing, ZZ, gp
+input = sys.argv[1]
+R = PolynomialRing(ZZ, 'x')
+output = gp.polredabs(R(input))
+print(input+ ":" + str(output))
+15:12:19 From Edgar Costa to Everyone : sage -python ola.py 'x^4 + 3*x + 1'
+x^4 + 3*x + 1:x^4 - 3*x + 1
+15:13:16 From Edgar Costa to Everyone : ['ola.py', 'x^4 + 3*x + 1']
+15:15:10 From Andrew Sutherland to Everyone : awk '{print "sage -pytthon ola.py ",$1,$2}' >jobs.txt
+15:15:54 From Andrew Sutherland to Everyone : awk -F\| '{print "sage -pytthon ola.py ",$1,$2}' >jobs.txt
+15:16:47 From Andrew Sutherland to Everyone : awk -F\| '{print "sage -pytthon ola.py ",$1,$2}' | parallel
+15:17:03 From Andrew Sutherland to Everyone : parallel --progress --jobs 10 <jobs.txt
+15:18:03 From Andrew Sutherland to Everyone : parallel --progress --jobs 10 --timeout 600 <jobs.txt
+15:18:28 From Edgar Costa to Everyone : You can use resume in parallel
+15:18:58 From Andrew Sutherland to Everyone : parallel --progress --jobs 10 --timeout 600 <jobs.txt  >results.txt
+15:19:33 From Andrew Sutherland to Everyone : comm -23 input.txt output.txt >todo.txt
+15:22:55 From Edgar Costa to Everyone : parallel -j 2  --timeout 1 --joblog joblog sleep {} ::: {1..5}
+parallel: Warning: This job was killed because it timed out:
+parallel: Warning: sleep 2
+parallel: Warning: This job was killed because it timed out:
+parallel: Warning: sleep 3
+parallel: Warning: This job was killed because it timed out:
+parallel: Warning: sleep 4
+parallel: Warning: This job was killed because it timed out:
+parallel: Warning: sleep 5
+15:23:04 From Edgar Costa to Everyone : cat joblog
+Seq	Host	Starttime	JobRuntime	Send	Receive	Exitval	Signal	Command
+1	:	1610742112.309	     1.004	0	0	0	0	sleep 1
+2	:	1610742112.313	     1.848	0	0	-1	15	sleep 2
+3	:	1610742113.320	     1.700	0	0	-1	15	sleep 3
+4	:	1610742114.165	     1.852	0	0	-1	15	sleep 4
+5	:	1610742115.025	     2.109	0	0	-1	15	sleep 5
+15:23:17 From Edgar Costa to Everyone : parallel -j 2 --joblog joblog --retry-failed
+15:24:00 From Edgar Costa to Everyone : Seq	Host	Starttime	JobRuntime	Send	Receive	Exitval	Signal	Command
+1	:	1610742207.562	     1.006	0	0	0	0	sleep 1
+2	:	1610742207.565	     1.569	0	0	-1	15	sleep 2
+3	:	1610742208.574	     1.508	0	0	-1	15	sleep 3
+4	:	1610742209.140	     2.052	0	0	-1	15	sleep 4
+5	:	1610742210.086	     2.056	0	0	-1	15	sleep 5
+2	:	1610742223.146	     2.004	0	0	0	0	sleep 2
+3	:	1610742223.149	     3.011	0	0	0	0	sleep 3
+4	:	1610742225.154	     4.011	0	0	0	0	sleep 4
+5	:	1610742226.165	     4.321	0	0	-1	15	sleep 5

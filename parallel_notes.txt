@@ -1,0 +1,72 @@
+parallel 
+
+int main (int argc, char *argv[])
+Edgar Costa to Everyone (3:12 PM)
+import sys
+from sage.all import PolynomialRing, ZZ, gp
+input = sys.argv[1]
+R = PolynomialRing(ZZ, 'x')
+output = gp.polredabs(R(input))
+print(input+ ":" + str(output))
+sage -python ola.py 'x^4 + 3*x + 1'
+x^4 + 3*x + 1:x^4 - 3*x + 1
+['ola.py', 'x^4 + 3*x + 1']
+Andrew Sutherland to Everyone (3:15 PM)
+awk '{print "sage -python ola.py ",$1,$2}' >jobs.txt
+awk -F\| '{print "sage -python ola.py ",$1,$2}' >jobs.txt
+awk -F\| '{print "sage -python ola.py ",$1,$2}' | parallel
+Andrew Sutherland to Everyone (3:17 PM)
+parallel --progress --jobs 10 <jobs.txt
+parallel --progress --jobs 10 --timeout 600 <jobs.txt
+You can use resume in parallel
+parallel --progress --jobs 10 --timeout 600 <jobs.txt  >results.txt
+comm -23 input.txt output.txt >todo.txt
+
+parallel -j 2  --timeout 1 --joblog joblog sleep {} ::: {1..5}
+parallel: Warning: This job was killed because it timed out:
+parallel: Warning: sleep 2
+parallel: Warning: This job was killed because it timed out:
+parallel: Warning: sleep 3
+parallel: Warning: This job was killed because it timed out:
+parallel: Warning: sleep 4
+parallel: Warning: This job was killed because it timed out:
+parallel: Warning: sleep 5
+Edgar Costa to Everyone (3:23 PM)
+cat joblog
+Seq	Host	Starttime	JobRuntime	Send	Receive	Exitval	Signal	Command
+1	:	1610742112.309	     1.004	0	0	0	0	sleep 1
+2	:	1610742112.313	     1.848	0	0	-1	15	sleep 2
+3	:	1610742113.320	     1.700	0	0	-1	15	sleep 3
+4	:	1610742114.165	     1.852	0	0	-1	15	sleep 4
+5	:	1610742115.025	     2.109	0	0	-1	15	sleep 5
+Edgar Costa to Everyone (3:23 PM)
+parallel -j 2 --joblog joblog --retry-failed
+
+python script, call gp on temp file
+
+import sys, os
+f = sys.argv[0]
+
+sage -gp -fq temp.gp > temp.out
+
+# 20 cores to start?
+# >> for append, > for overwrite
+# first pass
+parallel --joblog joblogfile --progress --jobs 10 --timeout 600 < jobs.txt  > results.txt
+parallel --joblog job_abs.log --progress --eta --jobs 20 --timeout 60 < absjobs.txt  > results_abs.txt
+parallel --joblog job.log --eta --progress --jobs 20 --timeout 10 < jobs_unique.txt  >> results.txt
+
+# second pass, retrying failed
+parallel --jobs 20 --joblog job.log --retry-failed --eta --timeout 600 >> results.txt
+parallel --jobs 19 --joblog job_abs.log --retry-failed --eta --timeout 300 >> results_abs.txt
+
+# last pass, retrying failed with degree bound (edited script)
+parallel --jobs 20 --joblog job_abs.log --retry-failed --eta --timeout 3600 >> results_abs.txt
+
+head -n1 job_abs.log  | cut -f1-8
+head job_abs.log  | cut -f1-2 -d\^
+cat job_abs.log  | cut -f1-2 -d\^ | sort -k4 -n
+
+https://gist.github.com/edgarcosta/703083c079a783686a73e244fbf9bf97
+
+# last pass: deg <= 47, 60 min timeout, 20 cores
