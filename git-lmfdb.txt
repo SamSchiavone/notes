@@ -26,6 +26,8 @@ git push --set-upstream origin belyi
 # start running lmfdb locally
   sage --python ./start-lmfdb.py --debug
 
+my port on legendre is 37777, so go to http://127.0.0.1:37777/
+
 # look through the database in sage
   1) open sage in lmfdb directory
   2) from lmfdb import db
