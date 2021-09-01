@@ -84,3 +84,8 @@ pull = fetch + merge
   git remote rename musty michaelmusty
   git fetch michaelmusty belyi
   git checkout michaelmusty/belyi
+
+# push to one of the color branches
+git push david belyi_prim:blue # where belyi_prim is local branch name
+# if that doesn't work, pull from blue first
+git pull david blue
