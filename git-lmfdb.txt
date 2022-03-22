@@ -92,3 +92,6 @@ git pull david blue
 
 # for server errors, look at flask log
 https://groups.lmfdb.xyz/flasklog
+
+# to see what a color version like https://blue.lmfdb.xyz/ is serving, look at info:
+https://blue.lmfdb.xyz/info
