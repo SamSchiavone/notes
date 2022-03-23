@@ -95,3 +95,5 @@ https://groups.lmfdb.xyz/flasklog
 
 # to see what a color version like https://blue.lmfdb.xyz/ is serving, look at info:
 https://blue.lmfdb.xyz/info
+# to view the data in the API
+https://beta.lmfdb.org/api/belyi_galmaps_fixed/
