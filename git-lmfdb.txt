@@ -24,7 +24,9 @@ git push --set-upstream origin belyi
   git checkout -b new_branch_name
 
 # start running lmfdb locally
-  sage --python ./start-lmfdb.py --debug
+  sage --python ./start-lmfdb.py --debug # debug is currently broken due to cython, use one below
+
+  BETA=1 sage --python ./start-lmfdb.py
 
 my port on legendre is 37777, so go to http://127.0.0.1:37777/
 
