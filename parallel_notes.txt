@@ -1,5 +1,11 @@
 parallel 
 
+another example
+
+parallel -j 16 --joblog joblog --eta -a filenames.txt magma -b filename:={} ~/github/Gm-Reduce/script.m  > output.txt
+
+=================================================
+
 int main (int argc, char *argv[])
 Edgar Costa to Everyone (3:12 PM)
 import sys
