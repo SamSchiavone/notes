@@ -90,6 +90,7 @@ pull = fetch + merge
 # push to one of the color branches
 git push david belyi_prim:blue # where belyi_prim is local branch name
 # if that doesn't work, pull from blue first
+# but careful; can acquire unwanted changes this way
 git pull david blue
 
 # for server errors, look at flask log
