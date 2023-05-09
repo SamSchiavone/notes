@@ -1,0 +1,3 @@
+running Magma from the command line setting a variable. -b means don't print Magma banner
+
+magma -b D:=13 Verification/CanonicalRingsScript.m
