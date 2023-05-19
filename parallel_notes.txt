@@ -4,6 +4,8 @@ another example
 
 parallel -j 16 --joblog joblog --eta -a filenames.txt magma -b filename:={} ~/github/Gm-Reduce/script.m  > output.txt
 
+> to overwrite, >> to append
+
 =================================================
 
 int main (int argc, char *argv[])
