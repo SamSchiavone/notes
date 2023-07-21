@@ -1,0 +1,16 @@
+# basic git usage
+
+# to pull updates from the upstream, master branch
+git pull upstream master
+
+# seeing which files you've changed
+git status
+
+# to see lines that have changed in each file
+git diff
+
+# adding a new file test.txt
+git add test.txt
+
+# commiting files
+git commit -am "added a test file"
