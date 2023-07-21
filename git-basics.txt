@@ -14,3 +14,6 @@ git add test.txt
 
 # commiting files
 git commit -am "added a test file"
+
+# discarding changes to test.txt
+git checkout test.txt 
