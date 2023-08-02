@@ -15,5 +15,11 @@ git add test.txt
 # commiting files
 git commit -am "added a test file"
 
+# pushing files to your Github account
+git push
+
+# requesting the upstream to pull changes that you've made
+Go to the upstream's Github webpage, click on Pull requests at the top of the screen, then click New pull request. Click compare across forks and make sure you choose the correct branch.
+
 # discarding changes to test.txt
 git checkout test.txt 
