@@ -18,9 +18,9 @@ git checkout michaelmusty/belyi
 git push --set-upstream origin belyi
 
 #branches:
-  To make a new branch (starting from upstream/master)
+  To make a new branch (starting from upstream/main)
   git fetch upstream
-  git checkout upstream/master
+  git checkout upstream/main
   git checkout -b new_branch_name
 
 # start running lmfdb locally
@@ -52,6 +52,9 @@ my port on legendre is 37777, so go to http://127.0.0.1:37777/
   ./test.sh -n 20
   (20 for use 20 cores)
 
+  ./test.sh -n 20 lmfdb/belyi
+  to just run Belyi tests
+
 # notes
 fetch downloads
 merge merges
@@ -78,7 +81,7 @@ pull = fetch + merge
 
 # scratchwork
   git status
-  git fetch upstream master
+  git fetch upstream main
   git remote
   git remote add musty git@github.com:michaelmusty/lmfdb.git
   git fetch musty belyidb
