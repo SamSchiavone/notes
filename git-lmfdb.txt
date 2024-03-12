@@ -39,8 +39,9 @@ my port on legendre is 37777, so go to http://127.0.0.1:37777/
   6) To get all curves with j-invariant 0, do ec.search({"jinv":"0"}) (the brackets b/c it's a dictionary)
   7) To convert generator object to list, just call list()
 
-# how to make a query with not equals
+# how to make a query with not equals or >=
   g1 = belyi.search({'g':1,'base_field':{'$ne':[-1,1]}})
+  db.gps_gl2zhat_coarse.lucky({'genus':{'$gte':4}})
 
 # query for an attribute containing something
   subgps.lucky({'ambient' : "6.1", 'special_labels':{'$contains':'6.1.Phi'}})['label']
