@@ -1,0 +1,2 @@
+# download all PDF files from a URL
+wget -r -l1 -H -t1 -nd -N -np -A.pdf -erobots=off --wait=2 --random-wait --limit-rate=20k http://van-der-geer.nl/~gerard/YMSC-lectures2020
