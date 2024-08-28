@@ -1,2 +1,7 @@
 # download all PDF files from a URL
 wget -r -l1 -H -t1 -nd -N -np -A.pdf -erobots=off --wait=2 --random-wait --limit-rate=20k http://van-der-geer.nl/~gerard/YMSC-lectures2020
+
+# sync source directory with remote directory using rsyc
+# see https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories
+rsync -av --dry-run 18-700/ sschiavo@runge.mit.edu:~/www/18-700 # dry run to double check which files will be changed
+rsync -av 18-700/ sschiavo@runge.mit.edu:~/www/18-700 # real deal. note trailing backslash on the source! otherwise, weirdness
