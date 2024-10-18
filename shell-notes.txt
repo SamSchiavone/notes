@@ -8,3 +8,9 @@ rsync -av 18-700/ sschiavo@runge.mit.edu:~/www/18-700 # real deal. note trailing
 
 # set permissions with chmod
 rsync -av --chmod=og=rx 18-700/ sschiavo@runge.mit.edu:~/www/18-700
+
+# move all non-directory files
+for f in $(find . -maxdepth 1 -type f)
+do
+mv "$f" "LessonPlan11/$f"
+done
