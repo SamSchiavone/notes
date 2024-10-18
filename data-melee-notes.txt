@@ -1,0 +1,10 @@
+# first, activate wireguard using conf file in my home directory
+
+# SSH address
+sam_schiavone@10.0.0.49
+
+# Activate docker
+docker exec -it fall_2024_melee_container /bin/bash
+
+#
+nvtop to check usage of GPU
