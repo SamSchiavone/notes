@@ -6,9 +6,9 @@ Setup:
 5) You did it!
 
 Further notes:
-git remote -v tells you where things are fetched from and pushed to on the web
+git remote -v # tells you where things are fetched from and pushed to on the web
 
-To communicate with the origin version need to "add upstream", e.g.,
+To communicate with the upstream version (the repo you forked from) need to "add upstream", e.g.,
 git remote add upstream git@github.com:edgarcosta/hilbertmodularforms.git
 Then if you do "git remote -v" it should include more options for fetching and pushing.
 
