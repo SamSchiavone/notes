@@ -1,2 +1,3 @@
 vim scp://sschiavo@legendre.mit.edu///scratch/home/sschiavo/github/GlueingJacobians/Code/KummerFunctions.m
 vim scp://sschiavo@legendre.mit.edu///scratch/home/sschiavo/github/lmfdb/lmfdb/belyi/web_belyi.py
+vim scp://sschiavo@legendre.mit.edu///scratch/home/sschiavo/github/Genus-4-RM-CM/mumford/quatalg.m
