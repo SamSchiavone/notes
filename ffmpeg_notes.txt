@@ -1,0 +1,8 @@
+# convert mp4 audio file to mp3
+ffmpeg -i "Rhubarb (Christian's remix 2025).mp4" -vn -sn -c:a mp3 -ab 192k audio.mp3
+
+# combine video and audio mp4 files
+ffmpeg -i video.mp4 -i audio.wav -c:v copy -c:a output.mp4
+
+# if you want to reencode the audio as AAC
+ffmpeg -i video.mp4 -i audio.wav -c:v copy -c:a aac output.mp4
