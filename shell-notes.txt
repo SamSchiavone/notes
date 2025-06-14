@@ -14,3 +14,8 @@ for f in $(find . -maxdepth 1 -type f)
 do
 mv "$f" "LessonPlan11/$f"
 done
+
+# find files
+# basic usage
+find . -type f -name "my_file.txt"
+# for more advanced options, see https://www.geeksforgeeks.org/linux-unix/find-command-in-linux-with-examples/
