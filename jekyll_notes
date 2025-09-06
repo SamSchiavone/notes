@@ -15,10 +15,20 @@ https://benhcalvert.github.io/ReactPortfolio/#about
 
 To run site locally use:
 bundle exec jekyll serve
+To automatically reload webpage when changes are made
+bundle exec jekyll serve --livereload 
+
 
 Some themes that look good:
+
+https://github.com/alshedivat/al-folio?ref=jekyll-themes.com
+https://jekyll-themes.com/academicpages/academicpages.github.io
+https://github.com/daattali/beautiful-jekyll
+https://jekyllthemes.io/theme/feeling-responsive
+
 https://github.com/pages-themes/tactile
 https://github.com/pages-themes/slate
 https://github.com/pages-themes/midnight
 https://pages-themes.github.io/leap-day/
 (this last one has a menu thingy to jump to different sections)
+

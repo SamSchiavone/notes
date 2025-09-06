@@ -19,3 +19,7 @@ done
 # basic usage
 find . -type f -name "my_file.txt"
 # for more advanced options, see https://www.geeksforgeeks.org/linux-unix/find-command-in-linux-with-examples/
+
+# download a video from an m3u8 (or mpd) playlist specifying a list of segmented video files
+
+ffmpeg -i "playlist.m3u8" -c copy output.mp4
