@@ -3,12 +3,14 @@ bundle exec jekyll serve
 To automatically reload webpage when changes are made
 bundle exec jekyll serve --livereload 
 
-if LoadError:
-
-gem install bundler
-bundle install
-
 don't forget to activate conda base. necessary for jupyter notebooks
+
+if LoadError / "cannot load such file ... bundler-X.Y.Z":
+1. which ruby   -> should be ~/.rbenv/shims/ruby. If it's /opt/homebrew/...,
+   rbenv isn't loaded: source ~/.zshrc
+2. gem install bundler -v X.Y.Z   (X.Y.Z = the BUNDLED WITH version at the
+   bottom of Gemfile.lock)
+3. bundle install
 
 To standardize formatting:
 
@@ -17,6 +19,21 @@ npx prettier . --check
 and then
 
 npx prettier . --write
+
+Ruby is now managed by rbenv, not brew. .ruby-version pins this folder to 4.0.7 (lives in ~/.rbenv/versions/). brew upgrade can't break it.
+
+The Homebrew ruby is still installed but not in PATH anymore.
+Gemfile.lock ends with BUNDLED WITH 4.0.20 (the bundler that ships with Ruby 4.0).
+
+GitHub builds with ruby-version "4.0" in .github/workflows/deploy.yml.
+
+To upgrade Ruby (about once a year):
+rbenv install X.Y.Z
+rbenv local X.Y.Z
+gem install bundler -v <BUNDLED WITH version>   # or edit BUNDLED WITH to match bundle -v
+bundle install
+change ruby-version in deploy.yml to "X.Y" (series only; runner needs latest patch)
+commit Gemfile.lock + deploy.yml, push, check Deploy site run
 
 --------------------------------------------------
 
