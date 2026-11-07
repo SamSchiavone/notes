@@ -1,3 +1,25 @@
+To run site locally use:
+bundle exec jekyll serve
+To automatically reload webpage when changes are made
+bundle exec jekyll serve --livereload 
+
+if LoadError:
+
+gem install bundler
+bundle install
+
+don't forget to activate conda base. necessary for jupyter notebooks
+
+To standardize formatting:
+
+npx prettier . --check
+
+and then
+
+npx prettier . --write
+
+--------------------------------------------------
+
 TODO:
 1) edit default.html in _layouts, e.g., add menu bar or something. See these pages:
     https://jekyllrb.com/docs/themes/#overriding-theme-defaults
@@ -13,12 +35,6 @@ https://github.com/alexjbest/alexjbest.github.io
 https://github.com/edgarcosta/beantheory/blob/master/_layouts/default.html
 https://benhcalvert.github.io/ReactPortfolio/#about
 
-To run site locally use:
-bundle exec jekyll serve
-To automatically reload webpage when changes are made
-bundle exec jekyll serve --livereload 
-
-
 Some themes that look good:
 
 https://github.com/alshedivat/al-folio?ref=jekyll-themes.com
@@ -31,4 +47,3 @@ https://github.com/pages-themes/slate
 https://github.com/pages-themes/midnight
 https://pages-themes.github.io/leap-day/
 (this last one has a menu thingy to jump to different sections)
-
